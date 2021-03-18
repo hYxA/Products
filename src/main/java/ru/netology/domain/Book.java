@@ -4,6 +4,10 @@ import java.util.Objects;
 
 public class Book extends Product{
     private String author;
+
+
+
+    private String title;
     private int pages;
     private int publishedYear;
 
@@ -16,6 +20,12 @@ public class Book extends Product{
         this.author = author;
         this.pages = pages;
         this.publishedYear = publishedYear;
+    }
+
+    public String getTitle() {    return title;    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
