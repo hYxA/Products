@@ -18,18 +18,30 @@ public class ProductRepository {
         return items;
     }
 
-    public Product findById(int id) {
+    public Product findById(int idToFind) {
         for (Product item : items) {
-            if (item.getId() == id) {
+            if (item.getId() == idToFind) {
                 return item;
             }
         }
         return null;
     }
 
-    public Product fremoveById(int id) {
-
-        // TODO дописать логику
+    public Product removeById(int idToRemove) {
+        if (idToRemove > items.length) {
+            System.out.println("Не существует объекта с таким ID");
+            System.out.println("------------------");
+            return null;
+        }
+        int index = 0;
+        int length = items.length - 1;
+        Product[] result = new Product[length];
+        for (Product item : items) {
+            if (item.getId() != idToRemove) {
+                result[index] = item;
+                index++;
+            }
+        }
 
         return null;
     }
