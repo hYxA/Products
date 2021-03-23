@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
+import ru.netology.domain.Smartphone;
+import ru.netology.domain.TShirt;
 import ru.netology.repository.ProductRepository;
 import static java.lang.System.arraycopy;
 
@@ -37,6 +39,9 @@ public class ProductManager {
     }
 
     public boolean matches(Product product, String search) {
+        if (product.getName().equalsIgnoreCase(search)) {
+            return true;
+        }
         if (product instanceof Book) {
             Book book = (Book) product;
             if (book.getName().equalsIgnoreCase(search)) {
@@ -47,6 +52,30 @@ public class ProductManager {
             }
             return false;
         }
+
+        if (product instanceof Smartphone) {
+            Smartphone Smartphone = (Smartphone) product;
+            if (Smartphone.getModel().equalsIgnoreCase(search)) {
+                return true;
+            }
+            if (Smartphone.getManufacturer().equalsIgnoreCase(search)) {
+                return true;
+            }
+            return false;
+        }
+
+        if (product instanceof TShirt) {
+            TShirt tShirt = (TShirt) product;
+            if (tShirt.getSize().equalsIgnoreCase(search)) {
+                return true;
+            }
+            if (tShirt.getColor().equalsIgnoreCase(search)) {
+                return true;
+            }
+
+            return false;
+        }
+
         return false;
     }
 
