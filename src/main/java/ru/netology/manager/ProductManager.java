@@ -33,6 +33,7 @@ public class ProductManager {
                 int lastIndex = tmp.length - 1;
                 tmp[lastIndex] = item;
                 massiveResult = tmp;
+                toString();                  // по задумке, должен выписывать текущий элемент
             }
         }
         return massiveResult;
@@ -50,7 +51,6 @@ public class ProductManager {
             if (book.getAuthor().equalsIgnoreCase(search)) {
                 return true;
             }
-            return false;
         }
 
         if (product instanceof Smartphone) {
@@ -61,7 +61,6 @@ public class ProductManager {
             if (Smartphone.getManufacturer().equalsIgnoreCase(search)) {
                 return true;
             }
-            return false;
         }
 
         if (product instanceof TShirt) {
@@ -72,10 +71,7 @@ public class ProductManager {
             if (tShirt.getColor().equalsIgnoreCase(search)) {
                 return true;
             }
-
-            return false;
         }
-
         return false;
     }
 
