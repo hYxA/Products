@@ -3,6 +3,17 @@ package ru.netology.domain;
 
 import java.util.Objects;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@SuppressWarnings("Lombok")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper = true)
+
 public class TShirt extends Product {
     private String color;
     private String size;
@@ -20,25 +31,5 @@ public class TShirt extends Product {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), color, size);
-    }
-
-
-    public TShirt() {
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 }
