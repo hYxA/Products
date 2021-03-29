@@ -1,5 +1,6 @@
 package ru.netology.manager;
 
+import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
@@ -8,7 +9,8 @@ import ru.netology.domain.TShirt;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
-    
+    ProductManager manager = new ProductManager();
+
     private Product something =
             new Product(01, "something", 0);
 
@@ -34,4 +36,33 @@ class ProductManagerTest {
     private TShirt polo =
             new TShirt(06, "lacoste", 7000,
                     "red", "XS");
+
+    void prepareManager() {
+        manager.addProduct(something);
+        manager.addProduct(discount);
+        manager.addProduct(ancient);
+        manager.addProduct(stalker);
+        manager.addProduct(samsungA21s);
+        manager.addProduct(samsungA40);
+        manager.addProduct(polo);
+    }
+
+    @Test
+    public void shouldSave() {
+        prepareManager();
+        manager.addProduct(something);
+        Product[] expected = new Product[]{
+                something,
+                discount,
+                ancient,
+                stalker,
+                samsungA21s,
+                samsungA40,
+                polo,
+        };
+        Product[] actual = manager.getItems();
+
+        assertArrayEquals(expected, actual);
+    }
+
 }
