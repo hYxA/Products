@@ -11,30 +11,30 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductManagerTest {
     ProductManager manager = new ProductManager();
 
-    private Product something =
-            new Product(01, "something", 0);
+    private final Product something =
+            new Product(1, "something", 0);
 
-    private Product discount =
-            new Product(00, "discount", 50);
+    private final Product discount =
+            new Product(0, "discount", 50);
 
-    private Book ancient =
-            new Book(02, "ancient", 500,
+    private final Book ancient =
+            new Book(2, "ancient", 500,
                     "Tarmashev", 312, 2018);
 
-    private Book stalker =
-            new Book(05, "sandWatch", 500,
+    private final Book stalker =
+            new Book(5, "sandWatch", 500,
                     "Nedorub", 312, 2009);
 
-    private Smartphone samsungA40 =
-            new Smartphone(03, "samsungA40", 15990,
+    private final Smartphone samsungA40 =
+            new Smartphone(3, "samsungA40", 15990,
                     "A40", "samsung");
 
-    private Smartphone samsungA21s =
-            new Smartphone(04, "samsungA21s", 16990,
+    private final Smartphone samsungA21s =
+            new Smartphone(4, "samsungA21s", 16990,
                     "A21s", "samsung");
 
-    private TShirt polo =
-            new TShirt(06, "lacoste", 7000,
+    private final TShirt polo =
+            new TShirt(6, "lacoste", 7000,
                     "red", "XS");
 
     void prepareManager() {
@@ -59,6 +59,7 @@ class ProductManagerTest {
                 samsungA21s,
                 samsungA40,
                 polo,
+                something
         };
         Product[] actual = manager.getItems();
 
