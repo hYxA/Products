@@ -75,5 +75,9 @@ public class ProductManager {
         return false;
     }
 
+    public Product findById(int idToFind) {
+        Product result = repository.findById(idToFind);
 
+        return result;
+    }
 }

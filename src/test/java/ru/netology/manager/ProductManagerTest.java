@@ -1,5 +1,6 @@
 package ru.netology.manager;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
@@ -37,6 +38,7 @@ class ProductManagerTest {
             new TShirt(6, "lacoste", 7000,
                     "red", "XS");
 
+    @BeforeEach
     void prepareManager() {
         manager.addProduct(something);
         manager.addProduct(discount);
@@ -49,7 +51,6 @@ class ProductManagerTest {
 
     @Test
     public void shouldSave() {
-        prepareManager();
         manager.addProduct(something);
         Product[] expected = new Product[]{
                 something,
@@ -61,9 +62,50 @@ class ProductManagerTest {
                 polo,
                 something
         };
-        Product[] actual = manager.getItems();
+        Product[] actual = .getItems();
 
         assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindById() {
+        int idToFind = 4;
+        Product actual = manager.findById(idToFind);
+        Smartphone expected = samsungA21s;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMatchesProduct() {
+        Product product = discount;
+        boolean expected = manager.matches(product, "discount");
+
+        assertEquals(expected, true);
+    }
+
+    @Test
+    public void shouldMatchesBook() {
+        Book book = stalker;
+        boolean expected = manager.matches(book, "Nedorub");
+
+        assertEquals(expected, true);
+    }
+
+    @Test
+    public void shouldMatchesSmartphone() {
+        TShirt tShirt = polo;
+        boolean expected = manager.matches(tShirt, "lacoste");
+
+        assertEquals(expected, true);
+    }
+
+    @Test
+    public void shouldMatchesTShirt() {
+        Smartphone smartphone = samsungA40;
+        boolean expected = manager.matches(smartphone, "samsungA40");
+
+        assertEquals(expected, true);
     }
 
 }
