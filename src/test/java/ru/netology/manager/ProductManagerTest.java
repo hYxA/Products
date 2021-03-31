@@ -6,12 +6,12 @@ import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.domain.TShirt;
-import ru.netology.repository.ProductRepository;
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
     ProductManager manager = new ProductManager();
-    ProductRepository repository = new ProductRepository();
 
     private final Product something =
             new Product(1, "something", 0);
@@ -81,31 +81,63 @@ class ProductManagerTest {
         Product product = discount;
         boolean expected = manager.matches(product, "discount");
 
-        assertEquals(expected, true);
+        assertTrue(expected);
     }
 
     @Test
-    public void shouldMatchesBook() {
+    public void shouldMatchesBookAuthor() {
         Book book = stalker;
         boolean expected = manager.matches(book, "Nedorub");
 
-        assertEquals(expected, true);
+        assertTrue(expected);
     }
 
     @Test
-    public void shouldMatchesSmartphone() {
+    public void shouldMatchesBookName() {
+        Book book = ancient;
+        boolean expected = manager.matches(book, "ancient");
+
+        assertTrue(expected);
+    }
+
+    @Test
+    public void shouldMatchesTShirtSize() {
         TShirt tShirt = polo;
-        boolean expected = manager.matches(tShirt, "lacoste");
+        boolean expected = manager.matches(tShirt, "xs");
 
-        assertEquals(expected, true);
+        assertTrue(expected);
     }
 
     @Test
-    public void shouldMatchesTShirt() {
-        Smartphone smartphone = samsungA40;
-        boolean expected = manager.matches(smartphone, "samsungA40");
+    public void shouldMatchesTShirtColor() {
+        TShirt tShirt = polo;
+        boolean expected = manager.matches(tShirt, "red");
 
-        assertEquals(expected, true);
+        assertTrue(expected);
+    }
+
+    @Test
+    public void shouldNotMatches() {
+        TShirt tShirt = polo;
+        boolean expected = manager.matches(tShirt, "blue");
+
+        assertFalse(expected);
+    }
+
+    @Test
+    public void shouldMatchesSmartphoneModel() {
+        Smartphone smartphone = samsungA40;
+        boolean expected = manager.matches(smartphone, "a40");
+
+        assertTrue(expected);
+    }
+
+    @Test
+    public void shouldMatchesSmartphoneManufacturer() {
+        Smartphone smartphone = samsungA40;
+        boolean expected = manager.matches(smartphone, "samsung");
+
+        assertTrue(expected);
     }
 
 }
