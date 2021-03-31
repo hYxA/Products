@@ -18,6 +18,11 @@ public class ProductManager {
     private ProductRepository repository = new ProductRepository();
     private Product[] items = new Product[0];
 
+    public Product[] getItems() {
+        Product[] items = repository.findAll();
+        return items;
+    }
+
     public void addProduct(Product item) {
         repository.save(item);
     }

@@ -6,11 +6,12 @@ import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.domain.TShirt;
-
+import ru.netology.repository.ProductRepository;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
     ProductManager manager = new ProductManager();
+    ProductRepository repository = new ProductRepository();
 
     private final Product something =
             new Product(1, "something", 0);
@@ -52,6 +53,7 @@ class ProductManagerTest {
     @Test
     public void shouldSave() {
         manager.addProduct(something);
+        Product[] actual = manager.getItems();
         Product[] expected = new Product[]{
                 something,
                 discount,
@@ -62,8 +64,6 @@ class ProductManagerTest {
                 polo,
                 something
         };
-        Product[] actual = .getItems();
-
         assertArrayEquals(expected, actual);
     }
 
