@@ -19,7 +19,7 @@ public class ProductManager {
     private Product[] items = new Product[0];
 
     public Product[] getItems() {
-        Product[] items = repository.findAll();
+        items = repository.findAll();
         return items;
     }
 

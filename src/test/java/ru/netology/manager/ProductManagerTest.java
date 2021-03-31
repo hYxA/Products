@@ -140,4 +140,16 @@ class ProductManagerTest {
         assertTrue(expected);
     }
 
+    @Test
+    public void shouldSearchByText() {
+        Product[] expected = new Product[]{
+                samsungA40,
+                samsungA21s
+        };
+        Product[] actual = manager.searchBy("s");
+        System.out.println(actual);
+        assertArrayEquals(expected, actual);
+
+    }
+
 }
