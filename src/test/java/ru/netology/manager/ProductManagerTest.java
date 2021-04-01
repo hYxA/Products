@@ -126,8 +126,8 @@ class ProductManagerTest {
     @Test
     public void shouldSearchByText() {
         Product[] expect = new Product[]{
-                samsungA40,
-                samsungA21s
+                samsungA21s,
+                samsungA40
         };
         Product[] actual = manager.searchBy("samsung");
         System.out.println(actual);

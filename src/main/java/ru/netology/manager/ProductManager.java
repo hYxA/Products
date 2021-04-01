@@ -32,19 +32,19 @@ public class ProductManager {
     }
 
     public Product[] searchBy(String text) {
-        Product[] massiveResult = new Product[0];
-        int i = -1;
+        Product[] result = new Product[0];
+
         for (Product item : repository.findAll()) {
-            i += 1;
+
             if (matches(item, text)) {
-                Product[] tmp = new Product[massiveResult.length + 1];
+                Product[] tmp = new Product[result.length + 1];
+                arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = item;
-                arraycopy(tmp, 0, massiveResult, 0, massiveResult.length);
-                massiveResult = tmp;
+                result = tmp;
 
             }
         }
-        return massiveResult;
+        return result;
     }
 
     public boolean matches(Product product, String search) {
