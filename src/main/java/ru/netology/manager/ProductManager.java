@@ -30,15 +30,13 @@ public class ProductManager {
     public Product[] searchBy(String text) {
         Product[] massiveResult = new Product[0];
 
-        for (Product item : items) {
+        for (Product item : repository.findAll()) {
             if (matches(item, text)) {
-                int length = massiveResult.length + 1;
-                Product[] tmp = new Product[length];
+                Product[] tmp = new Product[massiveResult.length+1];
                 arraycopy(items, 0, tmp, 0, items.length);
-                int lastIndex = tmp.length - 1;
-                tmp[lastIndex] = item;
+                tmp[tmp.length - 1] = item;
                 massiveResult = tmp;
-                toString();                  // по задумке, должен выписывать текущий элемент
+                
             }
         }
         return massiveResult;
