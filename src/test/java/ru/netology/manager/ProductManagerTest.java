@@ -14,9 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductManagerTest {
     ProductRepository repository = new ProductRepository();
     ProductManager manager = new ProductManager();
-    /*Book book = new Book();
-    Smartphone smartphone = new Smartphone();*/
-
 
     private final Product something =
             new Product(1, "something", 0);
