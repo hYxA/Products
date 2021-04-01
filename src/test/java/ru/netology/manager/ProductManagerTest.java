@@ -13,13 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
     ProductRepository repository = new ProductRepository();
-    ProductManager manager = new ProductManager();
-
-    private final Product something =
-            new Product(1, "something", 0);
-
-    private final Product discount =
-            new Product(0, "discount", 50);
+    ProductManager manager = new ProductManager(repository);
 
     private final Book ancient =
             new Book(2, "ancient", 500,
