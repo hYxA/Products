@@ -8,6 +8,7 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.domain.TShirt;
 import ru.netology.repository.ProductRepository;
+
 import static java.lang.System.arraycopy;
 
 @AllArgsConstructor
@@ -32,14 +33,15 @@ public class ProductManager {
 
     public Product[] searchBy(String text) {
         Product[] massiveResult = new Product[0];
-
+        int i = -1;
         for (Product item : repository.findAll()) {
+            i += 1;
             if (matches(item, text)) {
-                Product[] tmp = new Product[massiveResult.length+1];
-                arraycopy(items, 0, tmp, 0, items.length);
+                Product[] tmp = new Product[massiveResult.length + 1];
                 tmp[tmp.length - 1] = item;
+                arraycopy(tmp, 0, massiveResult, 0, massiveResult.length);
                 massiveResult = tmp;
-                
+
             }
         }
         return massiveResult;

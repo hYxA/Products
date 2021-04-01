@@ -7,6 +7,7 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.domain.TShirt;
 import ru.netology.repository.ProductRepository;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
@@ -124,10 +125,13 @@ class ProductManagerTest {
 
     @Test
     public void shouldSearchByText() {
-
+        Product[] expect = new Product[]{
+                samsungA40,
+                samsungA21s
+        };
         Product[] actual = manager.searchBy("samsung");
         System.out.println(actual);
-        assertArrayEquals(actual, actual);
+        assertArrayEquals(expect, actual);
 
     }
 
