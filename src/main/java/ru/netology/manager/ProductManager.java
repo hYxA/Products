@@ -8,6 +8,7 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.domain.TShirt;
 import ru.netology.repository.ProductRepository;
+import static java.lang.System.arraycopy;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,12 +30,12 @@ public class ProductManager {
         repository.save(item);
     }
 
-    private Product[] actionSearchBy(Product product, String text) {
+    private Product[] actionSearchBy(Product product) {
         Product[] result = new Product[0];
         Product[] tmp = new Product[result.length + 1];
         // используйте System.arraycopy, чтобы скопировать всё из result в tmp
         tmp[tmp.length - 1] = product;
-        result = tmp;
+        arraycopy(tmp, 0, result, 0, result.length);
         return result;
     }
 
@@ -44,17 +45,19 @@ public class ProductManager {
         for (Product product : repository.findAll()) {
             if (product instanceof Book) {
                 if (matchesBook(product, text)) {
-                    result = actionSearchBy(product, text);
+                    result = actionSearchBy(product);
                 }
             }
+
             if (product instanceof Smartphone) {
                 if (matchesSmartphone(product, text)) {
-                    result = actionSearchBy(product, text);
+                    result = actionSearchBy(product);
                 }
             }
+
             if (product instanceof TShirt) {
                 if (matchesTShirt(product, text)) {
-                    result = actionSearchBy(product, text);
+                    result = actionSearchBy(product);
                 }
             }
         }
