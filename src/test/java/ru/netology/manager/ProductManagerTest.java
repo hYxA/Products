@@ -70,7 +70,7 @@ class ProductManagerTest {
     @Test
     public void shouldMatchesBookAuthor() {
         Book book = stalker;
-        boolean expected = manager.matches(book, "Nedorub");
+        boolean expected = manager.matchesBook(book, "Nedorub");
 
         assertTrue(expected);
     }
@@ -78,7 +78,7 @@ class ProductManagerTest {
     @Test
     public void shouldMatchesBookName() {
         Book book = ancient;
-        boolean expected = manager.matches(book, "ancient");
+        boolean expected = manager.matchesBook(book, "ancient");
 
         assertTrue(expected);
     }
@@ -86,7 +86,7 @@ class ProductManagerTest {
     @Test
     public void shouldMatchesTShirtSize() {
         TShirt tShirt = polo;
-        boolean expected = manager.matches(tShirt, "xs");
+        boolean expected = manager.matchesTShirt(tShirt, "xs");
 
         assertTrue(expected);
     }
@@ -94,7 +94,7 @@ class ProductManagerTest {
     @Test
     public void shouldMatchesTShirtColor() {
         TShirt tShirt = polo;
-        boolean expected = manager.matches(tShirt, "red");
+        boolean expected = manager.matchesTShirt(tShirt, "red");
 
         assertTrue(expected);
     }
@@ -102,7 +102,7 @@ class ProductManagerTest {
     @Test
     public void shouldNotMatches() {
         TShirt tShirt = polo;
-        boolean expected = manager.matches(tShirt, "blue");
+        boolean expected = manager.matchesTShirt(tShirt, "blue");
 
         assertFalse(expected);
     }
@@ -110,7 +110,7 @@ class ProductManagerTest {
     @Test
     public void shouldMatchesSmartphoneModel() {
         Smartphone smartphone = samsungA40;
-        boolean expected = manager.matches(smartphone, "a40");
+        boolean expected = manager.matchesSmartphone(smartphone, "a40");
 
         assertTrue(expected);
     }
@@ -118,7 +118,7 @@ class ProductManagerTest {
     @Test
     public void shouldMatchesSmartphoneManufacturer() {
         Smartphone smartphone = samsungA40;
-        boolean expected = manager.matches(smartphone, "samsung");
+        boolean expected = manager.matchesSmartphone(smartphone, "samsung");
 
         assertTrue(expected);
     }
