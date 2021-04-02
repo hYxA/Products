@@ -29,14 +29,33 @@ public class ProductManager {
         repository.save(item);
     }
 
+    private Product[] actionSearchBy(Product product, String text) {
+        Product[] result = new Product[0];
+        Product[] tmp = new Product[result.length + 1];
+        // используйте System.arraycopy, чтобы скопировать всё из result в tmp
+        tmp[tmp.length - 1] = product;
+        result = tmp;
+        return result;
+    }
+
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
+
         for (Product product : repository.findAll()) {
-            if (matches(product, text)) {
-                Product[] tmp = new Product[result.length + 1];
-                // используйте System.arraycopy, чтобы скопировать всё из result в tmp
-                tmp[tmp.length - 1] = product;
-                result = tmp;
+            if (product instanceof Book) {
+                if (matchesBook(product, text)) {
+                    result = actionSearchBy(product, text);
+                }
+            }
+            if (product instanceof Smartphone) {
+                if (matchesSmartphone(product, text)) {
+                    result = actionSearchBy(product, text);
+                }
+            }
+            if (product instanceof TShirt) {
+                if (matchesTShirt(product, text)) {
+                    result = actionSearchBy(product, text);
+                }
             }
         }
         return result;
